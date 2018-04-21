@@ -1,0 +1,49 @@
+{
+  "name": "vl-paginator",
+  "version": "0.4.1",
+  "description": "A Vue.js paginator component",
+  "main": "dist/vl-paginator.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development ./node_modules/webpack/bin/webpack.js --config=webpack.config.js",
+    "build": "rm -rf ./dist && cross-env NODE_ENV=production ./node_modules/webpack/bin/webpack.js --config=webpack.config.js --progress --hide-modules",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*.spec.js",
+    "prepublish": "npm run test; npm run build"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "paginator"
+  ],
+  "author": "Giang Thai Cuong <thaicuong.giang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.4",
+    "css-loader": "^0.28.11",
+    "expect": "^22.4.3",
+    "file-loader": "^1.1.11",
+    "jsdom": "^11.8.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.1.1",
+    "mocha-webpack": "^1.1.0",
+    "nyc": "^11.7.1",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.16",
+    "vue-test-utils": "^1.0.0-beta.11",
+    "webpack": "^3.6.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.(js|vue)"
+    ],
+    "instrument": false,
+    "sourceMap": false
+  }
+}
