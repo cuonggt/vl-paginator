@@ -23,21 +23,21 @@
             callback: {
                 type: Function
             },
-            onEachSide: {
-                type: Number,
-                default: 3
-            },
-            previousText: {
-                type: String,
-                default: '&laquo;'
-            },
-            nextText: {
-                type: String,
-                default: '&raquo;'
-            },
-            seperatorText: {
-                type: String,
-                default: '...'
+            options: {
+                type: Object,
+                required: false,
+                default() {
+                    return {}
+                }
+            }
+        },
+
+        data() {
+            return {
+                onEachSide: this.options.onEachSide || 3,
+                previousText: this.options.previousText || '&laquo;',
+                nextText: this.options.nextText || '&raquo;',
+                seperatorText: this.options.seperatorText || '...'
             }
         },
 
@@ -121,7 +121,7 @@
             },
 
             getElementSlider(onEachSide) {
-                let onBothSide = onEachSide * 2;
+                let onBothSide = onEachSide * 2 + 2;
 
                 if (! this.hasPages) {
                     return {'first': null, 'slider': null, 'last': null};

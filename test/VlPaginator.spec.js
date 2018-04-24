@@ -1,11 +1,11 @@
-import { mount } from 'vue-test-utils';
+import { shallow } from 'vue-test-utils';
 import VlPaginator from '../src/components/VlPaginator.vue';
 
 describe('VlPaginator.vue', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = mount(VlPaginator, {
+        wrapper = shallow(VlPaginator, {
             propsData: {
                 total: 11
             }
@@ -81,7 +81,7 @@ describe('VlPaginator.vue', () => {
             total: 1000
         });
         expect(wrapper.vm.elements).toEqual([
-            [1, 2, 3, 4, 5, 6, 7, 8],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             '...',
             [99, 100],
         ]);
@@ -101,7 +101,7 @@ describe('VlPaginator.vue', () => {
         expect(wrapper.vm.elements).toEqual([
             [1, 2],
             '...',
-            [92, 93, 94, 95, 96, 97, 98, 99, 100],
+            [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
         ]);
     });
 });
